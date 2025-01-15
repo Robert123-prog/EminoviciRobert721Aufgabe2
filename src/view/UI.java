@@ -182,7 +182,7 @@ public class UI {
         System.out.println("4. Delete");
         System.out.println("5. Read all");
         System.out.println("6. Filter by chosen ort");
-        System.out.println("7. Sort by Price");
+        System.out.println("7. Filter by Herkunft");
 
 
         System.out.println("Choice: ");
@@ -208,7 +208,7 @@ public class UI {
                 filterCustomerByChosenOrt();
                 break;
             case 7:
-                //sortCharakterCommodities();
+                filterByProductHerkunft();
                 break;
             default:
                 throw new RuntimeException("Invalid Option!");
@@ -313,7 +313,9 @@ public class UI {
 
     public void filterByProductHerkunft(){
         System.out.println("Enter Herkunft: ");
+        scanner.nextLine();
         String herkunft = scanner.nextLine();
+
 
         controller.filterByProductHerkunft(herkunft).forEach(charakter -> System.out.println(charakter.toString()));
     }
