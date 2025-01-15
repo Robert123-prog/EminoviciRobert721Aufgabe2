@@ -166,13 +166,6 @@ public class UI {
         controller.getProductRepo().forEach(Product -> System.out.println(Product.toString()));
         commodityMenu();
     }
-//
-//    public void filterByCategory(){
-//        System.out.println("Enter category: ");
-//        scanner.nextLine();
-//        String category = scanner.nextLine();
-//        controller.filterByCategory(category).forEach(Product -> System.out.println(Product.toString()));
-//    }
 
 
     public void customerMenu(){
@@ -183,6 +176,7 @@ public class UI {
         System.out.println("5. Read all");
         System.out.println("6. Filter by chosen ort");
         System.out.println("7. Filter by Herkunft");
+        System.out.println("8. Sort by Product price");
 
 
         System.out.println("Choice: ");
@@ -209,6 +203,9 @@ public class UI {
                 break;
             case 7:
                 filterByProductHerkunft();
+                break;
+            case 8:
+                sortClientProducts();
                 break;
             default:
                 throw new RuntimeException("Invalid Option!");
@@ -319,17 +316,17 @@ public class UI {
 
         controller.filterByProductHerkunft(herkunft).forEach(charakter -> System.out.println(charakter.toString()));
     }
-//
-//    public void sortCustomerCommodities(){
-//        System.out.println("Enter customer ID");
-//        Integer ID = scanner.nextInt();
-//        scanner.nextLine();
-//
-//        System.out.println("Enter sorting order: ");
-//        String sortingOrder = scanner.nextLine();
-//
-//        controller.sortCustomerCommodities(ID, sortingOrder).forEach(Product -> System.out.println(Product.toString()));
-//    }
+
+    public void sortClientProducts(){
+        System.out.println("Enter customer ID");
+        Integer ID = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Enter sorting order: ");
+        String sortingOrder = scanner.nextLine();
+
+        controller.sortClientProducts(ID, sortingOrder).forEach(Product -> System.out.println(Product.toString()));
+    }
 
     public static void main(String[] args) {
         new UI();

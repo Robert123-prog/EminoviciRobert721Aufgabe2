@@ -97,6 +97,22 @@ public class Controller {
                 .toList();
         return charakters;
     }
+
+    public List<Product> sortClientProducts(Integer charakterID, String sortingOrder){
+        Charakter charakter = charakterRepo.read(charakterID);
+
+        if (sortingOrder.equalsIgnoreCase("asc")){
+            return charakter.getProducts().stream()
+                    .sorted(Comparator.comparing(Product::getPrice))
+                    .toList();
+        } else if (sortingOrder.equalsIgnoreCase("desc")) {
+            return charakter.getProducts().stream()
+                    .sorted(Comparator.comparing(Product::getPrice).reversed())
+                    .toList();
+        }else {
+            throw new RuntimeException("Invalid Sorting Order");
+        }
+    }
 //
 //    public List<Commodity> filterByCategory(String category){
 //        List<Commodity> commodities = commodityRepo.getAll().stream()
