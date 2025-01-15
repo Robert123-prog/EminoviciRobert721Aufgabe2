@@ -83,6 +83,20 @@ public class Controller {
     public List<Product> getProductRepo() {
         return productRepo.getAll();
     }
+
+    public List<Charakter> filterByOrt(String ort){
+        List<Charakter> charakters = charakterRepo.getAll().stream()
+                .filter(charakter -> charakter.getHerkunftsort().equalsIgnoreCase(ort))
+                .toList();
+        return charakters;
+    }
+
+    public List<Charakter> filterByProductHerkunft(String herkunft){
+        List<Charakter> charakters = charakterRepo.getAll().stream()
+                .filter(charakter -> charakter.getProducts().stream().anyMatch(product -> product.getHerkunftsregion().equalsIgnoreCase(herkunft)))
+                .toList();
+        return charakters;
+    }
 //
 //    public List<Commodity> filterByCategory(String category){
 //        List<Commodity> commodities = commodityRepo.getAll().stream()

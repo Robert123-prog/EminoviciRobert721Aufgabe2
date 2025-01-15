@@ -181,7 +181,7 @@ public class UI {
         System.out.println("3. Update");
         System.out.println("4. Delete");
         System.out.println("5. Read all");
-        System.out.println("6. Filter by chosen category");
+        System.out.println("6. Filter by chosen ort");
         System.out.println("7. Sort by Price");
 
 
@@ -204,12 +204,12 @@ public class UI {
             case 5:
                 readAllCharakter();
                 break;
-//            case 6:
-//                filterCustomerByChosenCategory();
-//                break;
-//            case 7:
-//                sortCharakterCommodities();
-//                break;
+            case 6:
+                filterCustomerByChosenOrt();
+                break;
+            case 7:
+                //sortCharakterCommodities();
+                break;
             default:
                 throw new RuntimeException("Invalid Option!");
         }
@@ -303,13 +303,20 @@ public class UI {
         customerMenu();
     }
 
-//    public void filterCustomerByChosenCategory(){
-//        System.out.println("Enter category: ");
-//        scanner.nextLine();
-//        String category = scanner.nextLine();
-//
-//        controller.filterCustomersByChosenCategory(category).forEach(customer -> System.out.println(customer.toString()));
-//    }
+    public void filterCustomerByChosenOrt(){
+        System.out.println("Enter ort: ");
+        scanner.nextLine();
+        String ort = scanner.nextLine();
+
+        controller.filterByOrt(ort).forEach(charakter -> System.out.println(charakter.toString()));
+    }
+
+    public void filterByProductHerkunft(){
+        System.out.println("Enter Herkunft: ");
+        String herkunft = scanner.nextLine();
+
+        controller.filterByProductHerkunft(herkunft).forEach(charakter -> System.out.println(charakter.toString()));
+    }
 //
 //    public void sortCustomerCommodities(){
 //        System.out.println("Enter customer ID");
